@@ -52,10 +52,9 @@ Route::get('home/general',[MatController::class,'general']);
 Route::get('home/advanced',[MatController::class,'advanced']);
 
 
+Route::get('home/show', [MatController::class,'shiow']);
 
 
 
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -145,56 +145,17 @@
 					 <!-- left column -->
 					<div class="col-md-12"><!-- general form elements -->
 						<div class="card card-primary mt-2">
-
-                                        <div class="container mt-2">
-                                            <a type="button" href="{{ url('home/insertion_mat') }}" class="btn btn-warning">
-                                                Ajouter un materiel <i class="fas fa-plus-square"></i>
-                                            </a>
-                                        </div>
 							<div class="card-body">
 								<div class="row">
 									<div class="col-12">
 										<div class="card">
-                                                <div class="card-header">
-                                                        <h3 class="card-title"><i class="fa fas fa-server"></i>
-                                                    <b>Liste Global de materiels Informatique</b></h3>
-
-                                                </div>
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fa fas fa-server"></i>
+                                  <b>Liste Global de materiels Informatique</b></h3>
+                                </div>
 											<!-- /.card-header -->
 											<div class="card-body " style="height: 400px;">
-												<table class="table table-hover table-head-fixed text-nowrap">
-													<thead>
-														<tr>
-															<th>ID</th>
-															<th>Designation</th>
-															<th>Marque</th>
-															<th>Quantites</th>
-                                                            <th>Observation</th>
-															<th>Categorie</th>
-                                                            <th>Action</th>
-														</tr>
-													</thead>
-													<tbody>
-                                                   @foreach ($mats as $mat )
-														<tr>
-														  <td>{{ $mat->materiel_id }}</td>
-															<td>{{ $mat->designation }}</td>
-															<td>{{ $mat->marque }}</td>
-															<td>{{ $mat->quantites}}</td>
-															<td>{{ $mat->observation }}</td>
-                                                            <td>{{ $mat->categorie_id }}</td>
-															<td>
-                                                             <a type="button" href="{{ url('home/editmat/'.$mat->materiel_id) }}" class="btn btn-outline-primary">Editer</a>
-															</td>
-														</tr>
-                                                    @endforeach
-													</tbody>
-												</table>
-                                                <tr>
-                                                    <td colspan="6">
-                                                   {!! $mats->links('pagination::bootstrap-4') !!}
-                                                    </td>
-                                                </tr>
+
 							                </div>
 											<!-- /.card-body table-responsive p-0 -->
 										</div>

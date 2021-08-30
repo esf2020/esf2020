@@ -169,7 +169,6 @@
                       <label for="exampleInputBorderWidth2">Type de Mouvement :</label>
                       <select name="typemvt" value="{{ old('typemvt')}}" class="custom-select form-control form-control-border border-width-2" id="exampleSelectBorder">
                         <option selected disabled>choisir une Categorie </option>
-                        <option value="reversement">Reversement</option>
                         <option value="perception">Perception</option>
                         <option value="reparation">Reparation</option>
                       </select>

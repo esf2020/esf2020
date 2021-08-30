@@ -138,13 +138,9 @@
 															<td>{{ $mvt->organe}}</td>
 															<td>{{ $mvt->libresp }}</td>
 															<td>
-                                                             <form action="{{'home/listemvt'.$mvt->mvt_id}}"  method="POST">
-                                                                    {{csrf_field()}}
-                                                                    {{method_field('DELETE')}}
+                                                                <a type="button" href="{{url('home/show')}}" class="btn btn-outline-info"><i class="fas fa-eye"></i></a>
                                                                 <a type="button" href="{{ url('home/editmvt/'.$mvt->mvt_id)}}" class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></a>
                                                                 <a type="button" href="{{url('home/adddetails/'.$mvt->mvt_id)}}" class="btn btn-outline-dark"><i class="fas fa-plus-circle" aria-hidden="true"></i></a>
-                                                                <button type="submit" class="btn rounded-pill btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                             </form>
                                                             </td>
 
 														</tr>

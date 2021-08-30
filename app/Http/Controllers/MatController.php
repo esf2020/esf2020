@@ -9,8 +9,6 @@ use App\Models\Detail;
 use App\Http\Requests\matRequest;
 use App\Http\Requests\mvtRequest;
 use App\Http\Requests\GetRequest;
-//use App\Http\Requests\detRequest;
-
 
 class MatController extends Controller
 {
@@ -57,7 +55,6 @@ class MatController extends Controller
        }
 
        public function updatemat(GetRequest $request,$materiel_id){
-
         $data =Materiel::find($materiel_id);
         $data->designation = $request->input('designation');
         $data->marque = $request->input('marque');
@@ -69,18 +66,18 @@ class MatController extends Controller
         return redirect('home/listesmat');
 
        }
-	//******************************************************************
 
-      public function listemvt(){
+	  //******************************************************************
 
-        $mvts=Mvt::orderBy('mvt_id','asc')->paginate(5);
-        return view('temptate.listemvt',compact('mvts'));
-      }
+        public function listemvt(){
+            $mvts=Mvt::orderBy('mvt_id','asc')->paginate(5);
+            return view('temptate.listemvt',compact('mvts'));
+        }
 
-      public function insertmvt(){
-        $mvt = Mvt::all();
-        return view('temptate.insertmvt')->with('mvts',$mvt);
-      }
+        public function insertmvt(){
+            $mvt = Mvt::all();
+            return view('temptate.insertmvt')->with('mvts',$mvt);
+        }
 
          public function storemvt(mvtRequest $request){
             $data = new Mvt;
@@ -90,12 +87,13 @@ class MatController extends Controller
             $data->libresp = $request->input('responsable');
             $data->save();
             return redirect('home/listesmvt');
-           }
+        }
+
          public function editmvt($mvt_id){
 			$mvt = Mvt::find($mvt_id);
 			return view('temptate.edit_mvts')->with('mvt',$mvt);
 
-		 }
+		}
 
          public function updatemvt(mvtRequest $request,$mvt_id){
             $data =Mvt::find($mvt_id);
@@ -106,7 +104,7 @@ class MatController extends Controller
             $data->save();
             return redirect('home/listesmvt');
 
-         }
+        }
 
 
 
@@ -119,29 +117,20 @@ class MatController extends Controller
      }
 
      public function adddetails($mvt_id){
-         $categ = Categorie::all();
+        $categ = Categorie::all();
         $mat =  Materiel::all();
         $mvts = Mvt::all();
         $det = Mvt::find($mvt_id);
         $mvtDetail = Mvt::where('mvt_id',$mvt_id)
                      ->select('mvts.libresp as libresp','mvts.mvt_id as mvt_id')
                      ->first();
-          //    dd($mvtDetail);
-       /* $mvtDetail = Mvt::join('details','details.mvt_id', '=','mvts.mvt_id')
-                                ->where('details.mvt_id','=',$mvt_id)
-                                ->select('mvts.libresp as libresp','mvts.mvt_id as mvt_id')
-                                ->get();
-            dd($mvtDetail);       */
         return view('temptate.adddetails')->with('mat_v',$mat)->with('categ',$categ)->with('mvt',$mvts)->with('mvtDetail',$mvtDetail);
-        // ($mvtDetail->libresp);
-       // return view('temptate.adddetails')->with('mat_v',$mat)->with('categ',$categ)->with('mvt',$mvts);
+
      }
 
 
      public function storedetails(Request $request){
-
           $datadet = new Detail;
-
           $datadet->materiel_id = $request->input('materiel_id');
           $datadet->nserie = $request->input('nserie');
           $datadet->dtefin = $request->input('datefin');
@@ -152,10 +141,12 @@ class MatController extends Controller
      }
 
      public function glob(){
-       //$mvts = Mvt::all();
-		$dets = Detail::orderBy('mvt_id','asc')->paginate(5);
-        //$det  = Detail::all();
-        //return view('temptate.listes_det_mvt')->with('mat_v',$mat)->with('categ',$categ)->with('mvt',$mvts)->with('det_v',$det);
+		$dets = Detail::orderBy('materiel_id','asc')->paginate(5);
         return view('temptate.listes_det_mvt',compact('dets'));
+     }
+
+     public function show(){
+       return view('temptate.show');
+
      }
 }
