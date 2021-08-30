@@ -1,0 +1,53 @@
+/*
+    public function accueil(){
+        return view('accueil');
+    }
+
+    public function index(){
+       $categ = Categorie::all();
+       $mat =  Materiel::all();
+       return view('index')->with('mat_v',$mat)->with('categ',$categ);
+    }
+
+    public function insert(){
+        $cat = Categorie::all();
+        return view('insert',['cat_v' => $cat]);
+    }
+
+    public function store(Request $request){
+        $data = new Materiel;
+        $data->designation = $request->input('designation');
+        $data->marque = $request->input('marque');
+        $data->quantites = $request->input('quantites');
+        $data->observation = $request->input('observation');
+        $data->categorie_id = $request->input('id_categorie');
+        $data->save();
+        return redirect('home');
+
+    }
+    public function edit($materiel_id){
+
+        $categ = Categorie::all();
+        $mat = Materiel::find($materiel_id);
+        return view('editmat')->with('mat',$mat)->with('categ',$categ);
+
+
+    }
+    public function updatemat(Request $request,$materiel_id){
+
+        $data = Materiel::find($materiel_id);
+        $data->designation = $request->input('designation');
+        $data->marque = $request->input('marque');
+        $data->quantites = $request->input('quantites');
+        $data->observation = $request->input('observation');
+        $data->categorie_id = $request->input('categorie_id');
+        $data->save();
+        return redirect('home');
+    }
+    public function destroy(Request $request,$materiel_id){
+        //return $request->all();
+        $mat = Materiel::find($materiel_id);
+        $mat->delete();
+        return redirect('home');
+    }
+*/
