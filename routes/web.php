@@ -52,7 +52,7 @@ Route::get('home/general',[MatController::class,'general']);
 Route::get('home/advanced',[MatController::class,'advanced']);
 
 
-Route::get('home/show', [MatController::class,'shiow']);
+Route::get('home/show', [MatController::class,'show']);
 
 
 

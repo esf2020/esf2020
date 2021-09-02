@@ -109,44 +109,44 @@ class MatController extends Controller
 
 
 
-     public function detlist(){
-        $mat =  Materiel::all();
-        $mvts = Mvt::all();
-        $det = detail::all();
-        return view('temptate.detlist')->with('dets',$det);
-     }
+         public function detlist(){
+            $mat =  Materiel::all();
+            $mvts = Mvt::all();
+            $det = detail::all();
+            return view('temptate.detlist')->with('dets',$det);
+         }
 
-     public function adddetails($mvt_id){
-        $categ = Categorie::all();
-        $mat =  Materiel::all();
-        $mvts = Mvt::all();
-        $det = Mvt::find($mvt_id);
-        $mvtDetail = Mvt::where('mvt_id',$mvt_id)
-                     ->select('mvts.libresp as libresp','mvts.mvt_id as mvt_id')
-                     ->first();
-        return view('temptate.adddetails')->with('mat_v',$mat)->with('categ',$categ)->with('mvt',$mvts)->with('mvtDetail',$mvtDetail);
+         public function adddetails($mvt_id){
+            $categ = Categorie::all();
+            $mat =  Materiel::all();
+            $mvts = Mvt::all();
+            $det = Mvt::find($mvt_id);
+            $mvtDetail = Mvt::where('mvt_id',$mvt_id)
+                         ->select('mvts.libresp as libresp','mvts.mvt_id as mvt_id')
+                         ->first();
+            return view('temptate.adddetails')->with('mat_v',$mat)->with('categ',$categ)->with('mvt',$mvts)->with('mvtDetail',$mvtDetail);
 
-     }
+         }
 
 
-     public function storedetails(Request $request){
-          $datadet = new Detail;
-          $datadet->materiel_id = $request->input('materiel_id');
-          $datadet->nserie = $request->input('nserie');
-          $datadet->dtefin = $request->input('datefin');
-          $datadet->mvt_id = $request->mvt_id;
-          $datadet->save();
-          return  redirect('home/glob');
+         public function storedetails(Request $request){
+              $datadet = new Detail;
+              $datadet->materiel_id = $request->input('materiel_id');
+              $datadet->nserie = $request->input('nserie');
+              $datadet->dtefin = $request->input('datefin');
+              $datadet->mvt_id = $request->mvt_id;
+              $datadet->save();
+              return  redirect('home/glob');
 
-     }
+         }
 
-     public function glob(){
-		$dets = Detail::orderBy('materiel_id','asc')->paginate(5);
-        return view('temptate.listes_det_mvt',compact('dets'));
-     }
+         public function glob(){
+            $dets = Detail::orderBy('materiel_id','asc')->paginate(5);
+            return view('temptate.listes_det_mvt',compact('dets'));
+         }
 
-     public function show(){
-       return view('temptate.show');
+         public function show(){
+           return view('temptate.show');
 
-     }
+         }
 }

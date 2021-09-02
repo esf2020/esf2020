@@ -65,74 +65,88 @@
           </div>
 		     <!-- Sidebar Menu -->
 		     <nav class="mt-2">
-		      	<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                <a href="{{url('home/homechart')}}" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>Page d'accueil </p>
-                </a>
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                    <a href="{{url('home/homechart')}}" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Page d'accueil </p>
+                    </a>
 
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/listesmat')}}" class="nav-link active">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>Liste materiels</p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/insertion_mat')}}" class="nav-link ">
-                  <i class="nav-icon fas fa-plus"></i>
-                  <p>
-                  Insertion Materiels
-                  </p>
-                </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{url('home/listesmat')}}" class="nav-link active">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>Liste materiels</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-plus"></i>
+                          <p>
+                            Insertions
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p><b>Insertion Materiel</b></p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p><b>Insertion Mouvement</b></p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/inline.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Inline</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/uplot.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>uPlot</p>
+                                </a>
+                            </li>
+                        </ul>
+                      </li>
+                    <li class="nav-item">
+                        <a href="{{url('home/insertion_mat')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-plus"></i>
+                        <p>
+                        Insertion Materiels
+                        </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="{{url('home/listesmvt')}}" class="nav-link">
+                    <i class="nav-icon fas fa-list-ol"></i>
+                    <p>
+                    Listes Mouvement
+                    </p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="{{url('home/insertmvt')}}" class="nav-link">
+                    <i class="nav-icon fas fa-plus-square"></i>
+                    <p>
+                    <b>Insertions</b>
+                    </p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="{{url('home/glob')}}" class="nav-link">
+                        <i class="nav-icon fas fa-tree"></i>
+                        <p>Details MVT</p>
+                    </a>
+                    </li>
+                <li class="nav-header">EXAMPLES</li>
 
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/listesmvt')}}" class="nav-link">
-                  <i class="nav-icon fas fa-list-ol"></i>
-                  <p>
-                  Listes Mouvement
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/insertmvt')}}" class="nav-link">
-                  <i class="nav-icon fas fa-plus-square"></i>
-                  <p>
-                  Insertion MVT
-
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/glob')}}" class="nav-link">
-                    <i class="nav-icon fas fa-tree"></i>
-                    <p>Details MVT</p>
-                  </a>
-                </li>
-              <li class="nav-header">EXAMPLES</li>
-                <li class="nav-item">
-                <a href="../calendar.html" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
-                  <p>Calendar</p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="../gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>
-                  Gallery
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-search"></i>
-                  <p>  Search </p>
-                </a>
-                </li>
-			      </ul>
+                </ul>
 		      </nav>
 		  </div>
     </aside>
@@ -149,15 +163,13 @@
 								<div class="row">
 									<div class="col-12">
 										<div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title"><i class="fa fas fa-server"></i>
-                                  <b>Liste Global de materiels Informatique</b></h3>
-                                </div>
-											<!-- /.card-header -->
-											<div class="card-body " style="height: 400px;">
+                                                <div class="card-header">
+                                                    <h3 class="card-title"><i class="fa fas fa-server"></i>
+                                                      <b>Liste Global de materiels Informatique</b></h3>
+                                                    </div>
 
+											<div class="card-body " style="height: 400px;">
 							                </div>
-											<!-- /.card-body table-responsive p-0 -->
 										</div>
 									</div>
 								</div>
