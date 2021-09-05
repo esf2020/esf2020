@@ -109,20 +109,28 @@
 						  <input type="text" name="designation" value="{{ old('designation') }}" class="form-control form-control-border" id="exampleInputBorder" placeholder="Designation de Materiel ">
 
 						  @if ($errors->get('designation') )
-						  @foreach ( $errors->get('designation') as $message )
-							<h5 class="alert-default-danger">{{ $message }}</h5>
-						  @endforeach
-						 @endif
+                            @foreach ( $errors->get('designation') as $message )
+                                <h5 class="alert-default-danger">{{ $message }}</h5>
+                            @endforeach
+						  @endif
 						</div>
-						<div class="form-group ">
-						  <label for="exampleInputBorderWidth2">Marque de materiel :</label>
-						  <input type="text" name="marque" value="{{ old('marque') }}" class="form-control form-control-border border-width-2" id="exampleInputBorderWidth2" placeholder="Marque de materiel ">
-						  @if ($errors->get('marque') )
-						  @foreach ( $errors->get('marque') as $message )
-							<h5 class="alert-default-danger">{{ $message }}</h5>
-						  @endforeach
-						 @endif
-						</div>
+
+                        <div class="form-group">
+                            <label for="browser"> Marque Materiel:</label>
+                            <input list="browsers" name="marque" placeholder="Marque de materiel" class="form-control form-control-border"   id="browser">
+                            <datalist id="browsers">
+                                <option value="Hp">
+                                <option value="Acer">
+                                <option value="Asus">
+                                <option value="Mac">
+                                <option value="Dell">
+                            </datalist>
+                            @if ($errors->get('marque') )
+                            @foreach ( $errors->get('marque') as $message )
+                              <h5 class="alert-default-danger">{{ $message }}</h5>
+                            @endforeach
+                           @endif
+                        </div>
 						<div class="form-group ">
 						  <label for="exampleInputRounded0">Quantites de materiel : </label>
 						  <input type="number" name="quantites" value="{{ old('quantites') }}" class="form-control form-control-border border-width-2" id="exampleInputRounded0" min="1" placeholder="Quantites de materiel">

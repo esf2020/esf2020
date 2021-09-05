@@ -2,30 +2,31 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MatController;
 use App\Http\Controllers\MvtController;
+use App\Http\Controllers\DetController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-/*
-Route::get('/mvt',[MvtController::class,'mvt']);
-Route::get('/insertmvt',[MvtController::class,'insertmvt']);
-Route::post('/mvt',[MvtController::class,'storemvt']);
-Route::get('/mvt/{mvt_id}/edit',[MvtController::class,'editmvt']);
-Route::get('/mvt_det',[MvtController::class,'mvt_det']);
+/* //////////////
+    Route::get('/mvt',[MvtController::class,'mvt']);
+    Route::get('/insertmvt',[MvtController::class,'insertmvt']);
+    Route::post('/mvt',[MvtController::class,'storemvt']);
+    Route::get('/mvt/{mvt_id}/edit',[MvtController::class,'editmvt']);
+    Route::get('/mvt_det',[MvtController::class,'mvt_det']);
 
 
-Route::get('/accueil',[MatController::class,'accueil']);
-Route::get('/home',[MatController::class,'index']);
-Route::get('/insert',[MatController::class,'insert']);
-Route::post('/home',[MatController::class,'store']);
-Route::get('/home/{materiel_id}/edit',[MatController::class,'edit']);
-Route::put('/home/{materiel_id}',[MatController::class,'updatemat']);
-Route::delete('/home/{materiel_id}',[MatController::class,'destroy']);
+    Route::get('/accueil',[MatController::class,'accueil']);
+    Route::get('/home',[MatController::class,'index']);
+    Route::get('/insert',[MatController::class,'insert']);
+    Route::post('/home',[MatController::class,'store']);
+    Route::get('/home/{materiel_id}/edit',[MatController::class,'edit']);
+    Route::put('/home/{materiel_id}',[MatController::class,'updatemat']);
+    Route::delete('/home/{materiel_id}',[MatController::class,'destroy']);
 */
+Route::get('index',[MvtController::class,'index']);
 
-
-Route::get('home/homechart',[MatController::class,'homechart']);
+Route::get('home/index',[MatController::class,'index']);
 
 Route::get('home/listesmat',[MatController::class,'listesmat']);
 Route::get('home/insertion_mat',[MatController::class,'insertion_mat']);

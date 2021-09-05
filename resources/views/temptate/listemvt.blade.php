@@ -117,6 +117,11 @@
 								<div class="row">
 									<div class="col-12">
 										<div class="card">
+                                            @if(session()->has('message'))
+                                                <div class="alert alert-success">
+                                                    {{ session()->get('message') }}
+                                                </div>
+                                            @endif
 											<div class="card-body" style="height: 450px;">
 												<table class="table table-hover table-head-fixed text-nowrap">
 													<thead>

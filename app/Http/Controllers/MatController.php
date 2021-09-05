@@ -9,14 +9,29 @@ use App\Models\Detail;
 use App\Http\Requests\matRequest;
 use App\Http\Requests\mvtRequest;
 use App\Http\Requests\GetRequest;
+use Illuminate\Support\Facades\DB;
 
 class MatController extends Controller
 {
-        public function homechart(){
-                return view('temptate.homechart');
+        public function index(){
+            /** Sum des qte de touts les articles existes  */
+                $totalqte= DB::table('materiels')->sum('quantites');
+                $count = DB::table('materiels')->count();
+                $countdet = Detail::where('dtefin',null)->count();
+            /** qte mat par categegorie */
+                $ord = Materiel::where('categorie_id',1)->count();
+                $pc = Materiel::where('categorie_id',2)->count();
+                $serveur = Materiel::where('categorie_id',3)->count();
+                $clavier = Materiel::where('categorie_id',4)->count();
+            /** Quantites diponible du materiel */
+                $qtedisponible = $totalqte - $countdet;
+            /** nombre des mouvement existes */
+                $countmvt = DB::table('mvts')->count();
+            return view('temptate.home',compact('totalqte','count','countmvt','countdet','serveur','ord','pc',
+                             'clavier','qtedisponible'));
         }
         public function advanced(){
-            return view('temptate.advanced');
+            return view('temptate.show');
         }
         public function general(){
             return view('temptate.general');
@@ -43,7 +58,7 @@ class MatController extends Controller
             $data->observation = $request->input('observation');
             $data->categorie_id = $request->input('categorie_id');
             $data->save();
-            return redirect('home/listesmat');
+            return redirect('home/listesmat')->with('message','data inserer avec succes !!!!');
        }
 
        public function editmat($materiel_id){
@@ -63,7 +78,7 @@ class MatController extends Controller
         $data->categorie_id = $request->input('categorie_id');
         $data->save();
         session()->flash('msg','Data has updated successfully');
-        return redirect('home/listesmat');
+        return redirect('home/listesmat')->with('message','data modifier avec succes !!!!');
 
        }
 
@@ -86,7 +101,7 @@ class MatController extends Controller
             $data->organe = $request->input('organe');
             $data->libresp = $request->input('responsable');
             $data->save();
-            return redirect('home/listesmvt');
+            return redirect('home/listesmvt')->with('message','mouvement inserer avec succes !!!!');
         }
 
          public function editmvt($mvt_id){
@@ -102,7 +117,7 @@ class MatController extends Controller
             $data->organe = $request->input('organe');
             $data->libresp = $request->input('responsable');
             $data->save();
-            return redirect('home/listesmvt');
+            return redirect('home/listesmvt')->with('message','mouvement modifier avec succes !!!!');
 
         }
 

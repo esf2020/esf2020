@@ -116,8 +116,6 @@
 								<div class="row">
 									<div class="col-12">
 										<div class="card">
-
-											<!-- /.card-header -->
 											<div class="card-body table-responsive p-0" style="height: 300px;">
 												<table class="table table-head-fixed text-nowrap">
 													<thead>
@@ -142,10 +140,8 @@
                                                 <tr>
                                                     <td colspan="4">
                                                        {!! $dets->links('pagination::bootstrap-4') !!}
-                                                </td>
+                                                    </td>
                                                 </tr>
-
-
 											</div>
 											<!-- /.card-body table-responsive p-0 -->
 										</div>

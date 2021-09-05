@@ -10,7 +10,8 @@ use App\Models\Detail;
 
 class MvtController extends Controller
 {
-    public function mvt(){  
+ /*
+    public function mvt(){
         $listmvt = Mvt::all();
         return view('listmvt',['mvt_v' => $listmvt]);
     }
@@ -37,4 +38,9 @@ class MvtController extends Controller
           return view('editmvt')->with('mvt',$mvt);
          // dd($mvt);
       }
+
+*/
+
+
+
 }

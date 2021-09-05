@@ -6,6 +6,7 @@
    <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
    <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
  <body class="hold-transition sidebar-mini">
+
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -13,61 +14,14 @@
                 <i class="fas fa-laptop"></i><b> Gestion Matériels Informatiques</b>
             </h3>
         </ul>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-        <li class="nav-item">
-            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
-            </a>
-            <div class="navbar-search-block">
-            <form class="form-inline">
-                <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                    </button>
-                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                </div>
-            </form>
-            </div>
-        </li>
-
-        <!-- Messages Dropdown Menu -->
-
-        <!-- Notifications Dropdown Menu -->
-
-        <li class="nav-item">
-            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-            </a>
-        </li>
-
-        </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
 		  <div class="sidebar">
-		   <!-- SidebarSearch Form -->
-          <div class="form-inline mt-2">
-              <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                  <i class="fas fa-search fa-fw"></i>
-                </button>
-                </div>
-              </div>
-          </div>
-		     <!-- Sidebar Menu -->
+
 		     <nav class="mt-2">
 		      	<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                <a href="{{url('home/homechart')}}" class="nav-link">
+                <a href="{{url('home/index')}}" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Page d'accueil </p>
                 </a>
@@ -162,6 +116,11 @@
                                                 </div>
 											<!-- /.card-header -->
 											<div class="card-body " style="height: 400px;">
+                                                @if(session()->has('message'))
+                                                    <div class="alert alert-success">
+                                                        {{ session()->get('message') }}
+                                                    </div>
+                                                @endif
 												<table class="table table-hover table-head-fixed text-nowrap">
 													<thead>
 														<tr>
@@ -198,7 +157,38 @@
 							                </div>
 											<!-- /.card-body table-responsive p-0 -->
 										</div>
+
 									</div>
+                                    <div class="col-12">
+                                        <div class="card">
+                                          <div class="card-header">
+                                            <h3 class="card-title"><b>Status des Materiels</b></h3>
+                                          </div>
+                                          <!-- /.card-header -->
+                                          <div class="card-body">
+                                            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+                                              <thead>
+                                              <tr role="row">
+                                                <th>Marque Mat</th>
+                                                <th>Qte total</th>
+                                                <th>Qte disponible</th>
+                                                <th>Qte mvt</th>
+                                              </tr>
+                                              </thead>
+                                              <tbody>
+                                              <tr class="odd">
+                                                <td>HP</td>
+                                                <td>20</td>
+                                                <td>15</td>
+
+                                              </tr>
+                                            </tbody>
+
+                                            </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                                          </div>
+                                          <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
 								</div>
 							</div>
 						</div>
@@ -206,17 +196,12 @@
 				</div>
 				<!-- /.row -->
 			</div>
-		   <!-- /.container-fluid -->
-       <div class="container-fluid">
-				<div class="row">
-					 <!-- left column -->
-
-				</div>
-				<!-- /.row -->
-			</div>
 		</section> <!-- /.content -->
   </div>
-       <!--  js link  -->
+
+
+
+
       <!-- jQuery -->
       <script src="{{url('plugins/jquery.min.js')}}"></script>
       <!-- Bootstrap 4 -->
