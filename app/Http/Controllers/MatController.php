@@ -2,27 +2,35 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Middleware\checkCategory;
 use App\Models\Materiel;
 use App\Models\Categorie;
 use App\Models\Mvt;
 use App\Models\Detail;
-use App\Http\Requests\matRequest;
-use App\Http\Requests\mvtRequest;
-use App\Http\Requests\GetRequest;
 use Illuminate\Support\Facades\DB;
+//use App\Http\Requests\EndRequest;
 
 class MatController extends Controller
 {
+
+        public function  __construct(){
+
+            $this->middleware('checkCategory')->only('insertion_mat');
+        }
+
+
         public function index(){
             /** Sum des qte de touts les articles existes  */
                 $totalqte= DB::table('materiels')->sum('quantites');
                 $count = DB::table('materiels')->count();
                 $countdet = Detail::where('dtefin',null)->count();
+
             /** qte mat par categegorie */
                 $ord = Materiel::where('categorie_id',1)->count();
                 $pc = Materiel::where('categorie_id',2)->count();
                 $serveur = Materiel::where('categorie_id',3)->count();
                 $clavier = Materiel::where('categorie_id',4)->count();
+
             /** Quantites diponible du materiel */
                 $qtedisponible = $totalqte - $countdet;
             /** nombre des mouvement existes */
@@ -30,16 +38,25 @@ class MatController extends Controller
             return view('temptate.home',compact('totalqte','count','countmvt','countdet','serveur','ord','pc',
                              'clavier','qtedisponible'));
         }
+
         public function advanced(){
             return view('temptate.show');
         }
+
         public function general(){
             return view('temptate.general');
         }
+
       //************************************************************
         public function listesmat(){
 
-            $mats=Materiel::orderBy('materiel_id','asc')->paginate(5);
+            $mats = DB::table('categories')
+            ->join('materiels', 'categories.categorie_id', '=', 'materiels.categorie_id')
+            ->orderBy('materiel_id','asc')
+            ->paginate(6);
+            //return view('temptate.show',compact('data'));
+            //$categ = Categorie::all();
+            //$mats=Materiel::orderBy('materiel_id','asc')->paginate(6);
             return view('temptate.listesmat',compact('mats'));
         }
         public function insertion_mat(){
@@ -49,8 +66,15 @@ class MatController extends Controller
             return view('temptate.insertion_mat')->with('categ',$categ);
         }
 
-        public function store(GetRequest $request){
+        public function store(Request $request){
 
+            $this->validate($request,[
+            'designation' => 'required|min:2',
+            'marque' => 'required|min:2|alpha',
+            'quantites' => 'required',
+            'observation' => 'required',
+            'categorie_id' =>'required'
+            ]);
             $data = new Materiel;
             $data->designation = $request->input('designation');
             $data->marque = $request->input('marque');
@@ -58,7 +82,7 @@ class MatController extends Controller
             $data->observation = $request->input('observation');
             $data->categorie_id = $request->input('categorie_id');
             $data->save();
-            return redirect('home/listesmat')->with('message','data inserer avec succes !!!!');
+            return redirect('home/listesmat')->with('message',' Data inserer avec succes !!!!');
        }
 
        public function editmat($materiel_id){
@@ -69,7 +93,14 @@ class MatController extends Controller
 
        }
 
-       public function updatemat(GetRequest $request,$materiel_id){
+       public function updatemat(Request $request,$materiel_id){
+        $this->validate($request,[
+            'designation' => 'required|min:2',
+            'marque' => 'required|min:2|alpha',
+            'quantites' => 'required',
+            'observation' => 'required',
+            'categorie_id' =>'required'
+            ]);
         $data =Materiel::find($materiel_id);
         $data->designation = $request->input('designation');
         $data->marque = $request->input('marque');
@@ -77,8 +108,8 @@ class MatController extends Controller
         $data->observation = $request->input('observation');
         $data->categorie_id = $request->input('categorie_id');
         $data->save();
-        session()->flash('msg','Data has updated successfully');
-        return redirect('home/listesmat')->with('message','data modifier avec succes !!!!');
+        //session()->flash('msg','Data has updated successfully');
+        return redirect('home/listesmat')->with('message',' Data modifier avec succes !!!!');
 
        }
 
@@ -94,14 +125,21 @@ class MatController extends Controller
             return view('temptate.insertmvt')->with('mvts',$mvt);
         }
 
-         public function storemvt(mvtRequest $request){
+         public function storemvt(Request $request){
+            $this->validate($request,[
+                'datemvt' => 'required|date',
+                'typemvt' => 'required|min:2|alpha',
+                'organe' => 'required|min:2|alpha',
+                'responsable' => 'required|min:2|alpha',
+
+                ]);
             $data = new Mvt;
             $data->date_mvt = $request->input('datemvt');
             $data->type_mvt = $request->input('typemvt');
             $data->organe = $request->input('organe');
             $data->libresp = $request->input('responsable');
             $data->save();
-            return redirect('home/listesmvt')->with('message','mouvement inserer avec succes !!!!');
+            return redirect('home/listesmvt')->with('message',' Mouvement inserer avec succes !!!!');
         }
 
          public function editmvt($mvt_id){
@@ -110,14 +148,22 @@ class MatController extends Controller
 
 		}
 
-         public function updatemvt(mvtRequest $request,$mvt_id){
+         public function updatemvt(Request $request,$mvt_id){
+
+            $this->validate($request,[
+                'datemvt' => 'required|date',
+                'typemvt' => 'required|min:2|alpha',
+                'organe' => 'required|min:2|alpha',
+                'responsable' => 'required|min:2|alpha',
+
+                ]);
             $data =Mvt::find($mvt_id);
             $data->date_mvt = $request->input('datemvt');
             $data->type_mvt = $request->input('typemvt');
             $data->organe = $request->input('organe');
             $data->libresp = $request->input('responsable');
             $data->save();
-            return redirect('home/listesmvt')->with('message','mouvement modifier avec succes !!!!');
+            return redirect('home/listesmvt')->with('message',' Mouvement modifier avec succes !!!!');
 
         }
 

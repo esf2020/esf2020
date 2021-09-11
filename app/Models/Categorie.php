@@ -10,6 +10,7 @@ class Categorie extends Model
 {
     use HasFactory;
     protected $table="categories";
+    
     public function materiels()
     {
         return $this->hasMany(Materiel::class);

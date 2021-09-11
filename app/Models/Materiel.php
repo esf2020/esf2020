@@ -16,6 +16,7 @@ class Materiel extends Model
     //protected $dates = ['deleted_at'];
 
     protected $table="materiels";
+    
     public function categories()
     {
         return $this->belongsTo(Categorie::class);

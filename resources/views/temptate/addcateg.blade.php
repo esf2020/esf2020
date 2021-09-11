@@ -1,33 +1,29 @@
-  <link rel="stylesheet" href="{{url('plugins/all.min.css')}}">
-  <link rel="stylesheet" href="{{url('plugins/adminlte.min.css')}}">
-  <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css')}}">
-  <script src="{{ url('assets/js/bootstrap.min.js')}}"></script>
-  <script src="{{ url('assets/js/jquery.min.js')}}"></script>
-    <!-- font -->
-  <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
-  <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
+<link rel="stylesheet" href="{{url('plugins/all.min.css')}}">
+<link rel="stylesheet" href="{{url('plugins/adminlte.min.css')}}">
+<!-- font -->
+<link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
+<script src="{{ url('fontawesome/js/all.min.js')}}"></script>
 
-<body class="hold-transition sidebar-mini">
-
+<body class="hold-transition sidebar-mini ">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ url('home/index')}}" class="nav-link">Home</a>
-                </li>
-            </ul>
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ url('home/index')}}" class="nav-link">Home</a>
+            </li>
+        </ul>
     </nav>
-    <aside class="main-sidebar sidebar-dark-primary elevation-4 mt-lg-5">         <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item" disabled>
                         <div class="card-header bg-warning">
                         <b><i class="nav-icon fas fa-user-circle"></i>
-                          {{ Auth::user()->name }}</b>
+                        {{ Auth::user()->name }}</b>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -122,29 +118,53 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                <b><i class="fas fa-user-lock"></i>  {{ __('Logout') }}</b>
-                            </a>
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            <b><i class="fas fa-user-lock"></i>  {{ __('Logout') }}</b>
+                        </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </div>
     </aside>
+<div class="row mt-4 ml-2">
 
-    <div class="content-wrapper">
+  <div class="content-wrapper col-md-8">
 
+    <form action="{{ url('home/listescateg')}}" method="post">
+        {{csrf_field()}}
+          <div class="card card-warning ">
+                  <div class="card-header">
+                    <h3 class="card-title"><i class="fa fa-plus-square"></i>
+                    <b>Add Cat: </b></h3>
 
-    </div>
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-          <b>Version</b> 3.1.0
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="form-group ">
+                      <label for="exampleInputBorder">Nom Categorie: </label>
+                      <input type="text" name="categorie" class="form-control form-control-border" id="exampleInputBorder" >
+                        @if ($errors->get('categorie') )
+                        @foreach ( $errors->get('categorie') as $message )
+                        <h5 class="alert-default-danger">{{ $message }}</h5>
+                        @endforeach
+                        @endif
+                    </div>
+
+                    <button type="submit"  class="btn btn-success"><i class="fa fa-save"></i>
+                      Sauvgarder</button>
+                      <a type="buttont" href="{{ url('home/listescategorie')}}" class="btn btn-danger"><i class="fa fa-window-close"></i>
+                      Annuler</a>
+                  </div>
         </div>
-    </footer>
+    </form>
+
+  </div>
+</div>
   <script src="{{url('plugins/jquery.min.js')}}"></script>
   <script src="{{url('plugins/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{url('plugins/bs-custom-file-input.min.js')}}"></script>
@@ -155,7 +175,5 @@
     bsCustomFileInput.init();
   });
   </script>
-
-
 </body>
 </html>

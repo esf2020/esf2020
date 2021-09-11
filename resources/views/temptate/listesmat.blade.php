@@ -6,91 +6,132 @@
    <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
    <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
  <body class="hold-transition sidebar-mini">
-
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <h3 class="card-title">
-                <i class="fas fa-laptop"></i><b> Gestion Matériels Informatiques</b>
-            </h3>
-        </ul>
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ url('home/index')}}" class="nav-link">Home</a>
+                </li>
+            </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
-		  <div class="sidebar">
+        <div class="sidebar">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item" disabled>
+                        <div class="card-header bg-warning">
+                        <b><i class="nav-icon fas fa-user-circle"></i>
+                          {{ Auth::user()->name }}</b>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{url('home/index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>Page d'accueil </p>
+                        </a>
+                    </li>
+                    <!--========= Data of tables ==================================== -->
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Tables DATA
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('home/listesmat')}}" class="nav-link">
+                                <i class="far far fa-check-circle"></i>
+                                <p>Materiels</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('home/listesmvt')}}" class="nav-link">
+                                    <i class="far far fa-check-circle"></i>
+                                <p>Mouvement</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('home/listescateg')}}" class="nav-link">
+                                    <i class="far far fa-check-circle"></i>
+                                <p>Categories</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('home/glob')}}" class="nav-link">
+                                    <i class="far far fa-check-circle"></i>
+                                <p>Det MVT</p>
+                                </a>
+                            </li>
+                            </ul>
+                        </li>
+                    <!--========= end Data of tables ==================================== -->
+                    <!--========= Insertion  Data on DB ==================================== -->
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-user-plus"></i>
+                            <p>
+                                Insertion DATA
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{url('home/insertion_mat')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-plus"></i>
+                                <p>Insert Mat</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('home/insertmvt')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-plus-square"></i>
+                                <p>Insert Mvt</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('home/insertion_categ')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-plus-circle"></i>
+                                <p>ADD Categ</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--========= end Data of tables ==================================== -->
+                    <!--========= Aures paramètres ==================================== -->
+                    <li class="nav-header"><i class="fas fa-bell"></i><b> Autres paramètres </b></li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>Calendar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                            <i class="nav-icon far fa-image"></i>
+                            <p>
+                            Gallery
+                            </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                <b><i class="fas fa-user-lock"></i>  {{ __('Logout') }}</b>
+                            </a>
 
-		     <nav class="mt-2">
-		      	<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                <a href="{{url('home/index')}}" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>Page d'accueil </p>
-                </a>
-
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/listesmat')}}" class="nav-link active">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>Liste materiels</p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/insertion_mat')}}" class="nav-link ">
-                  <i class="nav-icon fas fa-plus"></i>
-                  <p>
-                  Insertion Materiels
-                  </p>
-                </a>
-
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/listesmvt')}}" class="nav-link">
-                  <i class="nav-icon fas fa-list-ol"></i>
-                  <p>
-                  Listes Mouvement
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/insertmvt')}}" class="nav-link">
-                  <i class="nav-icon fas fa-plus-square"></i>
-                  <p>
-                  Insertion MVT
-
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/glob')}}" class="nav-link">
-                    <i class="nav-icon fas fa-tree"></i>
-                    <p>Details MVT</p>
-                  </a>
-                </li>
-              <li class="nav-header">EXAMPLES</li>
-                <li class="nav-item">
-                <a href="../calendar.html" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
-                  <p>Calendar</p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="../gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>
-                  Gallery
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-search"></i>
-                  <p>  Search </p>
-                </a>
-                </li>
-			      </ul>
-		      </nav>
-		  </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                </ul>
+            </nav>
+        </div>
     </aside>
-    <!--menu  -->
     <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper"><!-- Main content -->
 		<section class="content">
@@ -99,12 +140,15 @@
 					 <!-- left column -->
 					<div class="col-md-12"><!-- general form elements -->
 						<div class="card card-primary mt-2">
-
                                         <div class="container mt-2">
                                             <a type="button" href="{{ url('home/insertion_mat') }}" class="btn btn-warning">
                                                 Ajouter un materiel <i class="fas fa-plus-square"></i>
                                             </a>
+                                            <a type="button" href="{{ url('home/insertion_categ') }}" class="btn btn-primary">
+                                                Add new category <i class="fas fa-calendar-plus"></i>
+                                            </a>
                                         </div>
+
 							<div class="card-body">
 								<div class="row">
 									<div class="col-12">
@@ -115,20 +159,21 @@
 
                                                 </div>
 											<!-- /.card-header -->
-											<div class="card-body " style="height: 400px;">
+											<div class="card-body " style="height: 420px;">
                                                 @if(session()->has('message'))
-                                                    <div class="alert alert-success">
-                                                        {{ session()->get('message') }}
+                                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                        <i class="fas fa-check-circle"></i> {{ session()->get('message') }}
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                     </div>
                                                 @endif
-												<table class="table table-hover table-head-fixed text-nowrap">
+												<table class="table table-hover table-head-fixed text-nowrap mb-3">
 													<thead>
 														<tr>
-															<th>ID</th>
+															<th style="width:4px;">ID</th>
 															<th>Designation</th>
-															<th>Marque</th>
-															<th>Quantites</th>
-                                                            <th>Observation</th>
+															<th  style="width:10px;">Marque</th>
+															<th>Qtes</th>
+                                                            <th style="width:30px;">Observation</th>
 															<th>Categorie</th>
                                                             <th>Action</th>
 														</tr>
@@ -136,14 +181,14 @@
 													<tbody>
                                                    @foreach ($mats as $mat )
 														<tr>
-														  <td>{{ $mat->materiel_id }}</td>
+														    <td>{{ $mat->materiel_id }}</td>
 															<td>{{ $mat->designation }}</td>
 															<td>{{ $mat->marque }}</td>
 															<td>{{ $mat->quantites}}</td>
-															<td>{{ $mat->observation }}</td>
-                                                            <td>{{ $mat->categorie_id }}</td>
-															<td>
-                                                             <a type="button" href="{{ url('home/editmat/'.$mat->materiel_id) }}" class="btn btn-outline-primary">Editer</a>
+															<td>{{ Str::limit($mat->observation, 30, $end=' .......') }}</td>
+                                                            <td>{{ $mat->lib_categ }}</td>
+                                                            <td>
+                                                             <a type="button" href="{{ url('home/editmat/'.$mat->materiel_id) }}" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
 															</td>
 														</tr>
                                                     @endforeach
@@ -155,41 +200,8 @@
                                                     </td>
                                                 </tr>
 							                </div>
-											<!-- /.card-body table-responsive p-0 -->
 										</div>
-
 									</div>
-                                    <div class="col-12">
-                                        <div class="card">
-                                          <div class="card-header">
-                                            <h3 class="card-title"><b>Status des Materiels</b></h3>
-                                          </div>
-                                          <!-- /.card-header -->
-                                          <div class="card-body">
-                                            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
-                                              <thead>
-                                              <tr role="row">
-                                                <th>Marque Mat</th>
-                                                <th>Qte total</th>
-                                                <th>Qte disponible</th>
-                                                <th>Qte mvt</th>
-                                              </tr>
-                                              </thead>
-                                              <tbody>
-                                              <tr class="odd">
-                                                <td>HP</td>
-                                                <td>20</td>
-                                                <td>15</td>
-
-                                              </tr>
-                                            </tbody>
-
-                                            </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
-                                          </div>
-                                          <!-- /.card-body -->
-                                        </div>
-                                        <!-- /.card -->
-								</div>
 							</div>
 						</div>
 					</div>
@@ -198,10 +210,6 @@
 			</div>
 		</section> <!-- /.content -->
   </div>
-
-
-
-
       <!-- jQuery -->
       <script src="{{url('plugins/jquery.min.js')}}"></script>
       <!-- Bootstrap 4 -->

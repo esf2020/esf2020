@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class matRequest extends FormRequest
+class EndRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,23 @@ class matRequest extends FormRequest
     public function rules()
     {
         return [
-          //
-            'designation' => 'required',
-            'marque' => 'required',
+            //
+            'designation' => 'required|min:2|alpha',
+            'marque' => 'required|min:2|alpha',
             'quantites' => 'required',
             'observation' => 'required',
             'categorie_id' =>'required',
             /** mvt */
-            
+            'datemvt' => 'required',
+            'typemvt' => 'required',
+            'organe' => 'required|min:4',
+            'responsable'=>'required|min:4|alpha',
             /** details */
             'materiel_id'=>'required',
             'nserie'=>'required',
             'datefin'=>'required',
-            'mvt_id'=> 'required'
+            'mvt_id'=> 'required',
+            'categorie'=>'required'
         ];
     }
 }

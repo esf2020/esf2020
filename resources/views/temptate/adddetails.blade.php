@@ -8,139 +8,132 @@
 <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
 <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
 <body class="hold-transition sidebar-mini">
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
-
-      <!-- Messages Dropdown Menu -->
-
-      <!-- Notifications Dropdown Menu -->
-
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-
-    </ul>
-  </nav>
-  <!-- en nav1-->
-   <!-- Main Sidebar sidebar-dark-primary elevation-4 -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
-		  <div class="sidebar">
-		   <!-- SidebarSearch Form -->
-          <div class="form-inline mt-2">
-              <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                  <i class="fas fa-search fa-fw"></i>
-                </button>
-                </div>
-              </div>
-          </div>
-		     <!-- Sidebar Menu -->
-		     <nav class="mt-2">
-		      	<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                <a href="{{url('home/homechart')}}" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>Page d'accueil </p>
-                </a>
-
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ url('home/index')}}" class="nav-link">Home</a>
+            </li>
+        </ul>
+</nav>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
+    <div class="sidebar mt-lg-5">
+        <nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item" disabled>
+                    <div class="card-header bg-warning">
+                    <b><i class="nav-icon fas fa-user-circle"></i>
+                      {{ Auth::user()->name }}</b>
+                    </div>
                 </li>
                 <li class="nav-item">
-                <a href="{{url('home/listesmat')}}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>Liste materiels</p>
-                </a>
+                    <a href="{{url('home/index')}}" class="nav-link">
+                      <i class="nav-icon fas fa-chart-pie"></i>
+                      <p>Page d'accueil </p>
+                    </a>
                 </li>
+                <!--========= Data of tables ==================================== -->
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            Tables DATA
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('home/listesmat')}}" class="nav-link">
+                            <i class="far far fa-check-circle"></i>
+                            <p>Materiels</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('home/listesmvt')}}" class="nav-link">
+                                <i class="far far fa-check-circle"></i>
+                            <p>Mouvement</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('home/listescateg')}}" class="nav-link">
+                                <i class="far far fa-check-circle"></i>
+                            <p>Categories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('home/glob')}}" class="nav-link">
+                                <i class="far far fa-check-circle"></i>
+                            <p>Det MVT</p>
+                            </a>
+                        </li>
+                        </ul>
+                    </li>
+                <!--========= end Data of tables ==================================== -->
+                <!--========= Insertion  Data on DB ==================================== -->
                 <li class="nav-item">
-                <a href="{{url('home/insertion_mat')}}" class="nav-link">
-                  <i class="nav-icon fas fa-plus"></i>
-                  <p>
-                  Insertion Materiels
-                  </p>
-                </a>
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-user-plus"></i>
+                        <p>
+                            Insertion DATA
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('home/insertion_mat')}}" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                            <p>Insert Mat</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('home/insertmvt')}}" class="nav-link">
+                                <i class="nav-icon fas fa-plus-square"></i>
+                            <p>Insert Mvt</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('home/insertion_categ')}}" class="nav-link">
+                                <i class="nav-icon fas fa-plus-circle"></i>
+                            <p>ADD Categ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--========= end Data of tables ==================================== -->
+                <!--========= Aures paramètres ==================================== -->
+                  <li class="nav-header"><i class="fas fa-bell"></i><b> Autres paramètres </b></li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                          <i class="nav-icon far fa-calendar-alt"></i>
+                          <p>Calendar</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                          <i class="nav-icon far fa-image"></i>
+                          <p>
+                          Gallery
+                          </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        <b><i class="fas fa-user-lock"></i>  {{ __('Logout') }}</b>
+                    </a>
 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </li>
-                <li class="nav-item">
-                <a href="{{url('home/listesmvt')}}" class="nav-link">
-                  <i class="nav-icon fas fa-list-ol"></i>
-                  <p>
-                  Listes Mouvement
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/insertmvt')}}" class="nav-link">
-                  <i class="nav-icon fas fa-plus-square"></i>
-                  <p>
-                  Insertion MVT
-
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="{{url('home/glob')}}" class="nav-link">
-                  <i class="nav-icon fas fa-tree"></i>
-                  <p>Details MVT</p>
-                </a>
-                </li>
-              <li class="nav-header"><b>INFO</b></li>
-
-                <li class="nav-item">
-                <a href="../gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>
-                  Gallery
-                  </p>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-search"></i>
-                  <p>  Search </p>
-                </a>
-                </li>
-			      </ul>
-		      </nav>
-		  </div>
-    </aside>
+            </ul>
+        </nav>
+    </div>
+</aside>
 <div class="row mt-2 ml-2">
 
   <div class="content-wrapper col-md-8">
