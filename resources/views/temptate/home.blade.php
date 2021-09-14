@@ -1,73 +1,70 @@
 <style>
-    body{
-        padding-top: 70px;
-        overflow: hidden;
-    }
-    .loading-overlay{
-        background: #222;
-        color: #FFF;
-        position: fixed;
-        left: 0%;
-        top: 0%;
-        width: 100%;
-        height: 100%;
-        z-index: 99999;
-    }
-   
-.center {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #000;
-}
-.wave {
-  width: 5px;
-  height: 100px;
-  background: linear-gradient(45deg, cyan, #fff);
-  margin: 10px;
-  animation: wave 1s linear infinite;
-  border-radius: 20px;
-}
-.wave:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.wave:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.wave:nth-child(4) {
-  animation-delay: 0.3s;
-}
-.wave:nth-child(5) {
-  animation-delay: 0.4s;
-}
-.wave:nth-child(6) {
-  animation-delay: 0.5s;
-}
-.wave:nth-child(7) {
-  animation-delay: 0.6s;
-}
-.wave:nth-child(8) {
-  animation-delay: 0.7s;
-}
-.wave:nth-child(9) {
-  animation-delay: 0.8s;
-}
-.wave:nth-child(10) {
-  animation-delay: 0.9s;
-}
 
-@keyframes wave {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
+            .loading-overlay{
+                background: #222;
+                color: #FFF;
+                position: fixed;
+                left: 0%;
+                top: 0%;
+                width: 100%;
+                height: 100%;
+                z-index: 99999;
+            }
+
+        .center {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        }
+        .wave {
+        width: 5px;
+        height: 100px;
+        background: linear-gradient(45deg, cyan, #fff);
+        margin: 10px;
+        animation: wave 1s linear infinite;
+        border-radius: 20px;
+        }
+        .wave:nth-child(2) {
+        animation-delay: 0.1s;
+        }
+        .wave:nth-child(3) {
+        animation-delay: 0.2s;
+        }
+        .wave:nth-child(4) {
+        animation-delay: 0.3s;
+        }
+        .wave:nth-child(5) {
+        animation-delay: 0.4s;
+        }
+        .wave:nth-child(6) {
+        animation-delay: 0.5s;
+        }
+        .wave:nth-child(7) {
+        animation-delay: 0.6s;
+        }
+        .wave:nth-child(8) {
+        animation-delay: 0.7s;
+        }
+        .wave:nth-child(9) {
+        animation-delay: 0.8s;
+        }
+        .wave:nth-child(10) {
+        animation-delay: 0.9s;
+        }
+
+        @keyframes wave {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0);
+        }
+        }
 
 </style>
 
@@ -96,8 +93,7 @@
       </div>
 </section>
 <!--  dinfo@gmail.com/DINFO@FAR -->
-<body class="hold-transition dark-mode sidebar-mini" style="overflow: hidden;">
-
+<body class="hold-transition  sidebar-mini layout-fixed">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -110,6 +106,10 @@
         </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4 ">         <!-- Sidebar -->
+         <p class="brand-link">
+            <img src="{{ url('dist/img/admin.PNG') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light"><b>USER : {{ Auth::user()->name }}</b></span>
+          </p>
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -117,7 +117,7 @@
                   <li class="nav-item" disabled>
                       <div class="card-header bg-warning">
                       <b><i class="nav-icon fas fa-user-circle"></i>
-                        {{ Auth::user()->name }}</b>
+                        Gestion MAT</b>
                       </div>
                   </li>
                   <li class="nav-item mt-3">
@@ -335,7 +335,7 @@
                                                       <div class="info-box-content">
                                                           <span class="info-box-text"><b>Pc Portable</b></span>
                                                           <span class="info-box-number">
-                                                          {{ $pc }}
+                                                          {{ $PC_PORTABLE  }}
                                                               <small>Article</small>
                                                           </span>
                                                       </div>
@@ -350,7 +350,7 @@
                                                       <div class="info-box-content">
                                                           <span class="info-box-text"><b>Ordinateur (U.C)</b></span>
                                                           <span class="info-box-number">
-                                                              {{ $ord }}
+                                                              {{ $UNITE_CENTRALE }}
                                                               <small>Article</small>
                                                           </span>
                                                       </div>
@@ -365,7 +365,7 @@
                                                       <div class="info-box-content">
                                                       <span class="info-box-text"><b>Serveur</b></span>
                                                       <span class="info-box-number">
-                                                          {{ $serveur }}
+                                                          {{ $SERVEUR  }}
                                                           <small>Article</small>
                                                       </span>
                                                       </div>
@@ -380,6 +380,7 @@
                                                       <div class="info-box-content">
                                                       <span class="info-box-text"><b>Switch reseau</b></span>
                                                       <span class="info-box-number">
+                                                          {{ $SWITCH }}
                                                           <small>Article</small>
                                                       </span>
                                                       </div>
@@ -395,8 +396,9 @@
                                                 <div class="info-box">
                                                   <span class="info-box-icon bg-light elevation-1"><i class="fab fa-intercom"></i></span>
                                                   <div class="info-box-content">
-                                                      <span class="info-box-text"><b>Routeur Wi-Fi</b></span>
+                                                      <span class="info-box-text"><b>MODEM ADSL</b></span>
                                                       <span class="info-box-number">
+                                                        {{ $MODEMADSL  }}
                                                           <small>Routeur</small>
                                                       </span>
                                                   </div>
@@ -411,7 +413,7 @@
                                                   <div class="info-box-content">
                                                       <span class="info-box-text"><b>Clavier</b></span>
                                                       <span class="info-box-number">
-                                                              {{$clavier}}
+                                                              {{$CLAVIERS }}
                                                           <small>clavier</small>
                                                       </span>
                                                   </div>
@@ -424,9 +426,10 @@
                                               <div class="info-box mb-3">
                                                   <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-wifi"></i></span>
                                                   <div class="info-box-content">
-                                                      <span class="info-box-text"><b>Modem 4G</b></span>
+                                                      <span class="info-box-text"><b>MATERIEL RESEAU</b></span>
                                                       <span class="info-box-number">
-                                                      <small>Modem</small>
+                                                     {{$MATERIELRESEAU}}
+                                                      <small>MATERIEL RESEAU</small>
                                                   </span>
                                                   </div>
                                               </div>
@@ -437,6 +440,7 @@
                                                   <div class="info-box-content">
                                                   <span class="info-box-text"> <b>Sourie</b></span>
                                                   <span class="info-box-number">
+                                                      {{ $Sourie }}
                                                       <small>Sourie </small>
                                                   </span>
                                                   </div>
@@ -448,20 +452,31 @@
                                                 <div class="info-box mb-3">
                                                     <span class="info-box-icon bg-gradient-gray-dark elevation-1"><i class="fas fa-video"></i></span>
                                                     <div class="info-box-content">
-                                                    <span class="info-box-text"> <b>Camera</b></span>
+                                                    <span class="info-box-text"> <b>Webcam</b></span>
                                                     <span class="info-box-number">
-                                                        <small>Cam</small>
+                                                        {{ $Webcam   }}
+                                                        <small>Webcam</small>
                                                     </span>
                                                     </div>
                                                 </div>
-                                              </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-md-3">
+                                                <div class="info-box mb-3">
+                                                    <span class="info-box-icon bg-gradient-gray-dark elevation-1"><i class="fas fa-video"></i></span>
+                                                    <div class="info-box-content">
+                                                    <span class="info-box-text"> <b>V CONFERENCE</b></span>
+                                                    <span class="info-box-number">
+                                                        {{ $Video_CONFERENCE   }}
+                                                        <small>Logitec Groupe</small>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            </div>
+
                                         </div>
                                   </div>
-
-
-
-
-
                                   <!-- ./card-body -->
                                   <div class="card-footer border border-primar">
                                       <script type="text/javascript">
@@ -481,14 +496,34 @@
             </div>
             <!-- /.row -->
         </div>
-    </section> <!-- /.content -->
+    </section>
+     <!-- /.content -->
 </div>
 <!-- lodading my page  -->
 
 
 
 <!-- lodading my page  -->
+<script src="{{ url('plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap -->
+<script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ url('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ url('dist/js/adminlte.js')}}"></script>
 
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="{{ url('plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
+<script src="{{ url('plugins/raphael/raphael.min.js')}}"></script>
+<script src="{{ url('plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
+<script src="{{ url('plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
+<!-- ChartJS -->
+<script src="{{ url('plugins/chart.js/Chart.min.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ url('dist/js/demo.js')}}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ url('dist/js/pages/dashboard2.js')}}"></script>
 <!--lien script adminelte-->
 
     <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
@@ -518,7 +553,7 @@
 <!--lien script adminelte-->
 <script>
     $(window).on('load', function () {
-        $(".loading-overlay").fadeOut(2000);
+        $(".loading-overlay").fadeOut(1000);
     });
  </script>
 </body>

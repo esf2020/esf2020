@@ -5,7 +5,7 @@
   <script src="{{ url('assets/js/jquery.min.js')}}"></script>
    <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
    <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
- <body class="hold-transition sidebar-mini">
+ <body class="hold-transition sidebar-mini layout-fixed">
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -161,28 +161,7 @@
                               </div>
                               <!-- /.card-header -->
                               <div class="card-body" style="height: 400px;">
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">First</th>
-                                        <th scope="col">First</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $test)
-                                      <tr>
-
-                                        <td>{{ $test->designation }}</td>
-                                        <td>{{ $test->lib_categ }}</td>
-                                      </tr>
-                                        @endforeach
-                                    </tbody>
-                                  </table>
-                                  <tr>
-                                    <td colspan="6">
-                                        {!! $data->links('pagination::bootstrap-4') !!}
-                                    </td>
-                                </tr>
+                                
                               </div>
                               <!-- /.card-body -->
                             </div>

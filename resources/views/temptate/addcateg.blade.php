@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
 <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
 
-<body class="hold-transition sidebar-mini ">
+<body class="hold-transition sidebar-mini layout-fixed">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -16,14 +16,18 @@
             </li>
         </ul>
     </nav>
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <p class="brand-link">
+            <img src="{{ url('dist/img/admin.PNG') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light"><b>USER : {{ Auth::user()->name }}</b></span>
+          </p>       <!-- Sidebar -->
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item" disabled>
                         <div class="card-header bg-warning">
                         <b><i class="nav-icon fas fa-user-circle"></i>
-                        {{ Auth::user()->name }}</b>
+                        Gestion MAT</b>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -102,6 +106,7 @@
                     <!--========= end Data of tables ==================================== -->
                     <!--========= Aures paramètres ==================================== -->
                     <li class="nav-header"><i class="fas fa-bell"></i><b> Autres paramètres </b></li>
+
                         <li class="nav-item">
                             <a href="" class="nav-link">
                             <i class="nav-icon far fa-calendar-alt"></i>
@@ -131,7 +136,6 @@
             </nav>
         </div>
     </aside>
-<div class="row mt-4 ml-2">
 
   <div class="content-wrapper col-md-8">
 
@@ -164,7 +168,7 @@
     </form>
 
   </div>
-</div>
+
   <script src="{{url('plugins/jquery.min.js')}}"></script>
   <script src="{{url('plugins/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{url('plugins/bs-custom-file-input.min.js')}}"></script>

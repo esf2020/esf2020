@@ -7,7 +7,7 @@
 <!-- font -->
 <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
 <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -20,13 +20,17 @@
         </ul>
 </nav>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
+    <p class="brand-link">
+        <img src="{{ url('dist/img/admin.PNG') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light"><b>USER : {{ Auth::user()->name }}</b></span>
+      </p>
     <div class="sidebar mt-lg-5">
         <nav class="mt-2">
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item" disabled>
                     <div class="card-header bg-warning">
                     <b><i class="nav-icon fas fa-user-circle"></i>
-                      {{ Auth::user()->name }}</b>
+                     Gestion MAT</b>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -153,12 +157,13 @@
                    <!-- /.card-header -->
 
                     <div class="card-body">
+
                         <label for="id_label_multiple" class="form-label">Designation</label>
                         <select  name="materiel_id" class="js-example-basic-multiple js-states form-control" id="id_label_multiple" multiple="multiple" required >
                         <option selected disabled>choisir le nom  de mat </option>
                         @foreach ($mat_v as $mat )
                             <option value="{{$mat->materiel_id }}">{{$mat->designation }}</option>
-                        @endforeach
+                            @endforeach
                         </select>
                     </div>
                     <div class="card-body ">
@@ -178,16 +183,11 @@
                               {$mvt->libresp }</option>
                         endforeach
                         </select-->
-                     <select name="" id="" class="form-control">
-                       <option value="{{ $mvtDetail->mvt_id  }}" selected disabled>{{ $mvtDetail->libresp  }}</option>
+                     <select name="" id="" class="form-control" disabled>
+                       <option value="{{ $mvtDetail->mvt_id  }}" selected >{{ $mvtDetail->libresp }}</option>
                      </select>
-
                        <input type="hidden" name="mvt_id" value="{{ $mvtDetail->mvt_id  }}">
-
-
-
-
-                        <!--input type="hidden" name="mvt_id" id="id_label_single" value="{ $mvtDetailId->mvt_id }" -->
+                      <!--input type="hidden" name="mvt_id" id="id_label_single" value="{ $mvtDetailId->mvt_id }" -->
                     </div>
                     <div class="card-body ">
                     <button type="submit"  class="btn btn-success sm"><i class="fa fa-save"></i>

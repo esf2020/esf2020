@@ -12,31 +12,54 @@ use Illuminate\Support\Facades\DB;
 
 class MatController extends Controller
 {
-
         public function  __construct(){
 
             $this->middleware('checkCategory')->only('insertion_mat');
         }
 
-
         public function index(){
+
             /** Sum des qte de touts les articles existes  */
                 $totalqte= DB::table('materiels')->sum('quantites');
                 $count = DB::table('materiels')->count();
                 $countdet = Detail::where('dtefin',null)->count();
-
             /** qte mat par categegorie */
-                $ord = Materiel::where('categorie_id',1)->count();
-                $pc = Materiel::where('categorie_id',2)->count();
-                $serveur = Materiel::where('categorie_id',3)->count();
-                $clavier = Materiel::where('categorie_id',4)->count();
+                $UNITE_CENTRALE = Materiel::where('categorie_id',1)->sum('quantites');
+                $PC_PORTABLE = Materiel::where('categorie_id',2)->sum('quantites');
+                $SERVEUR = Materiel::where('categorie_id',3)->sum('quantites');
+                $CLAVIERS = Materiel::where('categorie_id',4)->sum('quantites');
+                $ECRAN  = Materiel::where('categorie_id',5)->sum('quantites');
+                $SWITCH = Materiel::where('categorie_id',6)->sum('quantites');
+                $FIREWALL = Materiel::where('categorie_id',7)->sum('quantites');
+                $DSLAM = Materiel::where('categorie_id',8)->sum('quantites');
+                $GATWAYGSM = Materiel::where('categorie_id',9)->sum('quantites');
+                $MODEMADSL = Materiel::where('categorie_id',10)->sum('quantites');
+                $MATERIELRESEAU = Materiel::where('categorie_id',11)->sum('quantites');
+                $RALLONGE = Materiel::where('categorie_id',12)->sum('quantites');
+                $Webcam  = Materiel::where('categorie_id',13)->sum('quantites');
+                $Video_CONFERENCE = Materiel::where('categorie_id',14)->sum('quantites');
+                $Scanner = Materiel::where('categorie_id',15)->sum('quantites');
+                $APPAREIL_TELEPHONIQUE = Materiel::where('categorie_id',16)->sum('quantites');
+                $CLIMATISEUR= Materiel::where('categorie_id',17)->sum('quantites');
+                $TABLETTE= Materiel::where('categorie_id',18)->sum('quantites');
+                $Divers= Materiel::where('categorie_id',19)->sum('quantites');
+                $Materiel_VSAT= Materiel::where('categorie_id',20)->sum('quantites');
+                $ONDULEUR= Materiel::where('categorie_id',21)->sum('quantites');
+                $RADIO= Materiel::where('categorie_id',22)->sum('quantites');
+                $Video_Projecteur= Materiel::where('categorie_id',23)->sum('quantites');
+                $Materiels_juges= Materiel::where('categorie_id',24)->sum('quantites');
+                $Sourie= Materiel::where('categorie_id',25)->sum('quantites');
 
             /** Quantites diponible du materiel */
                 $qtedisponible = $totalqte - $countdet;
             /** nombre des mouvement existes */
                 $countmvt = DB::table('mvts')->count();
-            return view('temptate.home',compact('totalqte','count','countmvt','countdet','serveur','ord','pc',
-                             'clavier','qtedisponible'));
+            return view('temptate.home',compact('totalqte','count','countmvt','countdet','SERVEUR','UNITE_CENTRALE','PC_PORTABLE','SWITCH',
+                             'CLAVIERS','ECRAN','qtedisponible','Sourie','Materiels_juges','Video_Projecteur','RADIO','ONDULEUR',
+                             'Materiel_VSAT','Divers','TABLETTE','CLIMATISEUR','APPAREIL_TELEPHONIQUE','Scanner','Video_CONFERENCE',
+                             'Webcam','RALLONGE','MATERIELRESEAU','MODEMADSL','GATWAYGSM','DSLAM','FIREWALL'
+
+                            ));
         }
 
         public function advanced(){
@@ -54,9 +77,7 @@ class MatController extends Controller
             ->join('materiels', 'categories.categorie_id', '=', 'materiels.categorie_id')
             ->orderBy('materiel_id','asc')
             ->paginate(6);
-            //return view('temptate.show',compact('data'));
-            //$categ = Categorie::all();
-            //$mats=Materiel::orderBy('materiel_id','asc')->paginate(6);
+
             return view('temptate.listesmat',compact('mats'));
         }
         public function insertion_mat(){
@@ -166,10 +187,6 @@ class MatController extends Controller
             return redirect('home/listesmvt')->with('message',' Mouvement modifier avec succes !!!!');
 
         }
-
-
-
-
          public function detlist(){
             $mat =  Materiel::all();
             $mvts = Mvt::all();
@@ -202,7 +219,12 @@ class MatController extends Controller
          }
 
          public function glob(){
-            $dets = Detail::orderBy('materiel_id','asc')->paginate(5);
+
+            $dets = DB::table('materiels')
+            ->join('details', 'materiels.materiel_id', '=', 'details.materiel_id')
+            ->paginate(6);
+            
+           // $dets = Detail::orderBy('materiel_id','asc')->paginate(5);
             return view('temptate.listes_det_mvt',compact('dets'));
          }
 

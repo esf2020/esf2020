@@ -15,6 +15,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'],function () {
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('index',[MvtController::class,'index']);
@@ -36,7 +37,6 @@ Route::get('home/insertmvt',[MatController::class,'insertmvt']);
 Route::post('home/listesmvt',[MatController::class,'storemvt']);
 Route::get('home/editmvt/{mvt_id}',[MatController::class,'editmvt']);
 Route::put('home/editmvt/{mvt_id}',[MatController::class,'updatemvt']);
-
 
 
 Route::get('home/adddetails/{mvt_id}',[MatController::class,'adddetails']);

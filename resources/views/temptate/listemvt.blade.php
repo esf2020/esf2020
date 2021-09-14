@@ -6,7 +6,7 @@
    <link rel="stylesheet" href="{{ url('fontawesome/css/all.min.css')}}">
    <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
 
- <body class="hold-transition sidebar-mini">
+ <body class="hold-transition sidebar-mini layout-fixed">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -19,13 +19,17 @@
         </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">         <!-- Sidebar -->
+        <p class="brand-link">
+            <img src="{{ url('dist/img/admin.PNG') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light"><b>USER : {{ Auth::user()->name }}</b></span>
+          </p>
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item" disabled>
                         <div class="card-header bg-warning">
                         <b><i class="nav-icon fas fa-user-circle"></i>
-                          {{ Auth::user()->name }}</b>
+                          Gestion MAT</b>
                         </div>
                     </li>
                     <li class="nav-item">

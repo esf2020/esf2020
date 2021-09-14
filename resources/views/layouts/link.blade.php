@@ -30,8 +30,8 @@
     <script src="{{ url('fontawesome/js/all.min.js')}}"></script>
 
 <style>
-   
-        
+
+
    * {
         margin: 0;
         padding: 0;
@@ -150,8 +150,9 @@
     width: 150px;
     float: left;
 }
-   
+
 </style>
+
 <script src="{{url('plugins/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{url('plugins/bootstrap.bundle.min.js')}}"></script>
