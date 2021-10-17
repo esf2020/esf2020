@@ -16,7 +16,16 @@ class Materiel extends Model
     //protected $dates = ['deleted_at'];
 
     protected $table="materiels";
-    
+    protected $fillable = [
+        
+        'materiel_id',
+        'designation',
+        'marque',
+        'quantites',
+        'observation',
+        'categorie_id',
+    ];
+
     public function categories()
     {
         return $this->belongsTo(Categorie::class);

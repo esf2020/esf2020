@@ -40,6 +40,11 @@ class MvtController extends Controller
       }
 
 */
+ public function destroy($mvt_id){
+     $mvt = Mvt::find($mvt_id);
+     $mvt->delete();
+     return redirect('home/listesmvt')->with('success','Post deleted successfully');
+ }
 
 
 

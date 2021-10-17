@@ -10,8 +10,9 @@ use App\Models\Mvt;
 class Detail extends Model
 {
     use HasFactory;
-    
+
     protected $table="details";
+    protected $primaryKey = 'nserie';
     public function materiels()
     {
         return $this->belongsTo(Materiel::class);

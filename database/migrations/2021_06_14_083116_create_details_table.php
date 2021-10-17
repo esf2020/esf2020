@@ -14,21 +14,21 @@ class CreateDetailsTable extends Migration
     public function up()
     {
         Schema::create('details', function (Blueprint $table) {
-            
-            $table->string('nserie');
-            $table->Date('dtefin');
 
-            $table->unsignedBigInteger('mvt_id'); 
+            $table->string('nserie');
+            //$table->Date('dtefin');
+
+            $table->unsignedBigInteger('mvt_id');
             $table->foreign('mvt_id')
                     ->references('mvt_id')->on('mvts')
                     ->onDelete('cascade');
 
-            $table->unsignedBigInteger('materiel_id'); 
+            $table->unsignedBigInteger('materiel_id');
             $table->foreign('materiel_id')
                     ->references('materiel_id')->on('materiels')
                     ->onDelete('cascade');
 
-            
+
             $table->primary(array('nserie','materiel_id' , 'mvt_id'));
             $table->timestamps();
         });
